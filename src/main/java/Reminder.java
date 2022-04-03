@@ -31,9 +31,9 @@ public class Reminder {
         request.setMsgtype("text");
         OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
         if (getTime() == Time.MORNING) {
-            textContent = "今天这些同学需要做核酸，确认好了跟" + who + "说下[开心]today";
+            textContent = "今天这些同学需要做核酸，确认好了跟" + who + "说下[开心]";
         } else if (getTime() == Time.AFTERNOON) {
-            textContent = "明天这些同学需要做核酸tomorrow";
+            textContent = "明天这些同学需要做核酸";
         }
         text.setContent(textContent);
         request.setText(text);
