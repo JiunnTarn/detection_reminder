@@ -23,22 +23,23 @@ import java.util.*;
  */
 public class Reminder {
     public static void main(String[] args) throws Exception {
-        String who = Settings.getWho() == Who.ZJJ ? "朱嘉俊" : "徐宇翔";
+        Settings settings = new Settings(getTime());
+        String who = settings.getWho() == Who.ZJJ ? "朱嘉俊" : "徐宇翔";
         String textContent = "";
         DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/robot/send?access_token=99d3f226f6770bc23f77ac9794ffed569ae4886192865bf5def4a2e5c5de58e2" + Sign.sign());
         OapiRobotSendRequest request = new OapiRobotSendRequest();
         request.setMsgtype("text");
         OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
         if (getTime() == Time.MORNING) {
-            textContent = "今天这些同学需要做核酸，确认好了跟" + who + "说下[开心]";
+            textContent = "今天这些同学需要做核酸，确认好了跟" + who + "说下[开心]today";
         } else if (getTime() == Time.AFTERNOON) {
-            textContent = "明天这些同学需要做核酸";
+            textContent = "明天这些同学需要做核酸tomorrow";
         }
         text.setContent(textContent);
         request.setText(text);
 
         OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
-        at.setAtMobiles(getAtList());
+        at.setAtMobiles(getAtList(settings));
         request.setAt(at);
 
         OapiRobotSendResponse response = client.execute(request);
@@ -60,14 +61,14 @@ public class Reminder {
         return null;
     }
 
-    public static List<String> getAtList() throws IOException {
+    public static List<String> getAtList(Settings settings) throws IOException {
         List<String> res = new ArrayList<>();
         InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         DataMapper mapper = sqlSession.getMapper(DataMapper.class);
-        List<Integer> tailList = Settings.getTail();
+        List<Integer> tailList = settings.getTail();
         assert tailList != null;
         for (Integer i : tailList) {
             List<Data> result = mapper.getDataByTail(i);
