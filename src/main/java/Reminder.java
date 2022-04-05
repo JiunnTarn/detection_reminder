@@ -24,7 +24,7 @@ import java.util.*;
 public class Reminder {
     public static void main(String[] args) throws Exception {
         Settings settings = new Settings(getTime());
-        String who = settings.getWho() == Who.ZJJ ? "朱嘉俊" : "徐宇翔";
+        String who = settings.getWho() == Who.ZJJ ? "@15558670925" : "@16653072086";
         String textContent = "";
         DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/robot/send?access_token=99d3f226f6770bc23f77ac9794ffed569ae4886192865bf5def4a2e5c5de58e2" + Sign.sign());
         OapiRobotSendRequest request = new OapiRobotSendRequest();
