@@ -33,10 +33,10 @@ public class Reminder {
         OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
         if (getTime() == Time.MORNING) {
             markdown.setTitle("今天这些同学需要做核酸");
-            textContent = "今天这些同学需要做核酸，确认好了跟**" + who + "**说下[开心]";
+            textContent = "#### 今天这些同学需要做核酸\n> 确认好了跟**" + who + "**说下[开心]";
         } else if (getTime() == Time.AFTERNOON) {
             markdown.setTitle("明天这些同学需要做核酸");
-            textContent = "明天这些同学需要做核酸";
+            textContent = "#### 明天这些同学需要做核酸";
         }
         markdown.setText(textContent);
         request.setMarkdown(markdown);
