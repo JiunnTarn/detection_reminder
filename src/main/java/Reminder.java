@@ -1,5 +1,5 @@
-import com.JiunnTarn.mybatis.mapper.DataMapper;
-import com.JiunnTarn.mybatis.pojo.Data;
+import com.JiunnTarn.mybatis.DAO.DAO;
+
 import com.JiunnTarn.mybatis.setting.Time;
 import com.JiunnTarn.mybatis.setting.Settings;
 import com.JiunnTarn.mybatis.setting.Who;
@@ -8,14 +8,7 @@ import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.request.OapiRobotSendRequest;
 import com.dingtalk.api.response.OapiRobotSendResponse;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -29,18 +22,23 @@ public class Reminder {
         DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/robot/send?access_token=99d3f226f6770bc23f77ac9794ffed569ae4886192865bf5def4a2e5c5de58e2" + Sign.sign());
         OapiRobotSendRequest request = new OapiRobotSendRequest();
 
-        request.setMsgtype("text");
-        OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
+        request.setMsgtype("markdown");
+        OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
         if (getTime() == Time.MORNING) {
-            textContent = "今天这些同学需要做核酸，确认好了跟" + who + "说下[天使]";
+            markdown.setTitle("你今天需要做核酸哦！");
+            textContent = "### 今天这些同学需要做核酸\n" +
+                    "#### 确认好了跟" + who + "说下[天使]\n\n" +
+                    "> " + DAO.getAtString(settings) + "\n";
         } else if (getTime() == Time.AFTERNOON) {
-            textContent = "明天这些同学需要做核酸";
+            markdown.setTitle("明天记得做核酸哦！");
+            textContent = "### 明天这些同学需要做核酸\n\n" +
+                    "> " + DAO.getAtString(settings) + "\n";
         }
-        text.setContent(textContent);
-        request.setText(text);
+        markdown.setText(textContent);
+        request.setMarkdown(markdown);
 
         OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
-        at.setAtMobiles(getAtList(settings));
+        at.setAtMobiles(DAO.getAtList(settings));
         request.setAt(at);
 
         OapiRobotSendResponse response = client.execute(request);
@@ -62,24 +60,6 @@ public class Reminder {
             return Time.AFTERNOON;
         }
         return null;
-    }
-
-    public static List<String> getAtList(Settings settings) throws IOException {
-        List<String> res = new ArrayList<>();
-        InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
-        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        DataMapper mapper = sqlSession.getMapper(DataMapper.class);
-        List<Integer> tailList = settings.getTail();
-        assert tailList != null;
-        for (Integer i : tailList) {
-            List<Data> result = mapper.getDataByTail(i);
-            for (Data data : result) {
-                res.add(data.getPhone());
-            }
-        }
-        return res;
     }
 
 }
