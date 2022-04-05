@@ -1,0 +1,85 @@
+DEBUG main org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Opening JDBC Connection
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - Created connection 1647766367.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Setting autocommit to false on JDBC Connection [org.sqlite.SQLiteConnection@6236eb5f]
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 5(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 4
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 6(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 5
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 7(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 9
+DEBUG main org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Opening JDBC Connection
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - Created connection 1462044018.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Setting autocommit to false on JDBC Connection [org.sqlite.SQLiteConnection@57250572]
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 5(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 4
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 6(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 5
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 7(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 9
+DEBUG main org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Opening JDBC Connection
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - Created connection 1648001170.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Setting autocommit to false on JDBC Connection [org.sqlite.SQLiteConnection@623a8092]
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 5(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 4
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 6(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 5
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 7(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 9
+DEBUG main org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Opening JDBC Connection
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - Created connection 301749835.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Setting autocommit to false on JDBC Connection [org.sqlite.SQLiteConnection@11fc564b]
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 8(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 5
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 9(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 6
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 0(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 7
+DEBUG main org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Opening JDBC Connection
+DEBUG main org.apache.ibatis.datasource.pooled.PooledDataSource - Created connection 301749835.
+DEBUG main org.apache.ibatis.transaction.jdbc.JdbcTransaction - Setting autocommit to false on JDBC Connection [org.sqlite.SQLiteConnection@11fc564b]
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 8(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 5
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 9(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 6
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==>  Preparing: select name,phone,tail from data where tail = ?
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - ==> Parameters: 0(Integer)
+DEBUG main com.JiunnTarn.mybatis.mapper.DataMapper.getDataByTail - <==      Total: 7

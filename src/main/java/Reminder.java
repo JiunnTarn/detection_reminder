@@ -28,15 +28,18 @@ public class Reminder {
         String textContent = "";
         DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/robot/send?access_token=99d3f226f6770bc23f77ac9794ffed569ae4886192865bf5def4a2e5c5de58e2" + Sign.sign());
         OapiRobotSendRequest request = new OapiRobotSendRequest();
-        request.setMsgtype("text");
-        OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
+
+        request.setMsgtype("markdown");
+        OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
         if (getTime() == Time.MORNING) {
-            textContent = "今天这些同学需要做核酸，确认好了跟" + who + "说下[开心]";
+            markdown.setTitle("今天这些同学需要做核酸");
+            textContent = "今天这些同学需要做核酸，确认好了跟**" + who + "**说下[开心]";
         } else if (getTime() == Time.AFTERNOON) {
+            markdown.setTitle("明天这些同学需要做核酸");
             textContent = "明天这些同学需要做核酸";
         }
-        text.setContent(textContent);
-        request.setText(text);
+        markdown.setText(textContent);
+        request.setMarkdown(markdown);
 
         OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
         at.setAtMobiles(getAtList(settings));
@@ -44,8 +47,10 @@ public class Reminder {
 
         OapiRobotSendResponse response = client.execute(request);
         if (response.isSuccess()) {
+            System.out.println();
             System.out.println("Done");
         } else {
+            System.out.println();
             System.out.println("Error");
         }
     }
