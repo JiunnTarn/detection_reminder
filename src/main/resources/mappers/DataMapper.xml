@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiunntarn.detection_reminder.mybatis.mapper.DataMapper">
+    <!--int insertUser();-->
+    <select id="getDataByTail" resultType="com.jiunntarn.detection_reminder.mybatis.pojo.Data">
+        select name,phone,tail from data where tail = #{tail}
+    </select>
+</mapper>
