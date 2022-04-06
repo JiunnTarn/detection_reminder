@@ -27,7 +27,7 @@ public class Reminder {
         if (getTime() == Time.MORNING) {
             markdown.setTitle("你今天需要做核酸哦！");
             textContent = "### 今天这些同学需要做核酸\n" +
-                    "#### 确认好了跟" + who + "说下[天使]\n\n" +
+                    "### 确认好了跟" + who + "说下[天使]\n\n" +
                     "> " + DAO.getAtString(settings) + "\n";
         } else if (getTime() == Time.AFTERNOON) {
             markdown.setTitle("明天记得做核酸哦！");
