@@ -1,4 +1,4 @@
-package com.jiunntarn.detection_reminder.mybatis.setting;
+package com.jiunntarn.detection_reminder.setting;
 
 import java.util.Date;
 import java.util.List;

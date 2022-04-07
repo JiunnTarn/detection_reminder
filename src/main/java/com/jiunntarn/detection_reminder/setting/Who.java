@@ -1,4 +1,4 @@
-package com.jiunntarn.detection_reminder.mybatis.setting;
+package com.jiunntarn.detection_reminder.setting;
 
 /**
  * @author JiunnTarn

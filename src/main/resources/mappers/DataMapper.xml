@@ -2,9 +2,30 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jiunntarn.detection_reminder.mybatis.mapper.DataMapper">
+<mapper namespace="com.jiunntarn.detection_reminder.Dao.mapper.DataMapper">
     <!--int insertUser();-->
-    <select id="getDataByTail" resultType="com.jiunntarn.detection_reminder.mybatis.pojo.Data">
+    <select id="getStudentByTail" resultType="com.jiunntarn.detection_reminder.pojo.Student">
         select name,phone,tail from data where tail = #{tail}
     </select>
+
+    <select id="getStudentByName" resultType="com.jiunntarn.detection_reminder.pojo.Student">
+        select name,phone,tail from data where name = #{name}
+    </select>
+
+    <select id="getExcludeList" resultType="com.jiunntarn.detection_reminder.pojo.Student">
+        select name,phone,tail from exclude
+    </select>
+
+    <select id="getStudentInExcludeByName" resultType="com.jiunntarn.detection_reminder.pojo.Student">
+        select name,phone,tail from exclude where name = #{name}
+    </select>
+
+    <delete id="emptyExclude">
+        delete from exclude
+    </delete>
+
+    <insert id="insertExclude" parameterType="com.jiunntarn.detection_reminder.pojo.Student">
+        insert into exclude (name, phone, tail) values (#{name}, #{phone}, #{tail});
+    </insert>
+
 </mapper>

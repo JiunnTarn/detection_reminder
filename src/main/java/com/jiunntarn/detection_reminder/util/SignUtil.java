@@ -1,4 +1,4 @@
-package com.jiunntarn.detection_reminder.sign;
+package com.jiunntarn.detection_reminder.util;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -9,7 +9,7 @@ import java.net.URLEncoder;
 /**
  * @author JiunnTarn
  */
-public class Sign {
+public class SignUtil {
     public static String sign() throws Exception {
         Long timestamp = System.currentTimeMillis();
         String secret = "SECabea2e0ed34308b0bfd1faff0af747151f36ef7450168401c59baa9d7a3da65a";

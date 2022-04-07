@@ -1,14 +1,14 @@
-package com.jiunntarn.detection_reminder.mybatis.pojo;
+package com.jiunntarn.detection_reminder.pojo;
 
 /**
  * @author JiunnTarn
  */
-public class Data {
+public class Student {
     private final String name;
     private final String phone;
     private final Integer tail;
 
-    public Data(String name, String phone, Integer tail) {
+    public Student(String name, String phone, Integer tail) {
         this.name = name;
         this.phone = phone;
         this.tail = tail;
@@ -20,10 +20,14 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "Student{" +
                 "name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", tail=" + tail +
                 '}';
+    }
+
+    public String getName() {
+        return name;
     }
 }
