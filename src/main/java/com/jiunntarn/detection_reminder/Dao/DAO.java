@@ -47,6 +47,17 @@ public class DAO {
         mapper.insertExclude(student);
     }
 
+    public List<String> getExcludeStudent() {
+        List<String> exclude = new ArrayList<>();
+        List<Student> excludeList = mapper.getExcludeList();
+
+        for (Student student : excludeList) {
+            exclude.add(student.getName());
+        }
+
+        return exclude;
+    }
+
     public List<String> getUndoneStudent(Settings settings) {
         List<Integer> tailList = settings.getTail();
 

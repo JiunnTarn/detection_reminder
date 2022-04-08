@@ -16,6 +16,7 @@ public class GetUndoneStudentController {
     public static String getUndoneStudent() throws IOException {
         TimeUtil.printTime();
         System.out.println("\tGet undone student");
-        return GetUndoneStudentService.getUndoneStudent();
+
+        return "未完成名单：<br>" + GetUndoneStudentService.getUndoneStudent();
     }
 }

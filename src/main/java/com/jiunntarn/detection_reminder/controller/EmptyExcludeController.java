@@ -19,6 +19,7 @@ public class EmptyExcludeController {
     public static String emptyExcludeController() throws IOException {
         TimeUtil.printTime();
         System.out.println("\tempty exclude list");
+
         EmptyExcludeService.emptyExclude();
         return "Done";
     }

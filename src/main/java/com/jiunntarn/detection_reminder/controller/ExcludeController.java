@@ -25,6 +25,7 @@ public class ExcludeController {
     public String excludeByName(@RequestParam("name") String name) throws IOException {
         TimeUtil.printTime();
         System.out.println("\t" + name + " commite");
+
         int code = ExcludeService.excludeByName(name);
         return switch (code) {
             case 0 -> name + " 提交成功。";

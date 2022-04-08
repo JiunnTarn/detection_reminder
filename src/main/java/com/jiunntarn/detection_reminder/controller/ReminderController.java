@@ -17,6 +17,7 @@ public class ReminderController {
     public static String reminderController() throws Exception {
         TimeUtil.printTime();
         System.out.println("\tRun reminder");
+
         return ReminderService.reminder();
     }
 }
