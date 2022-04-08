@@ -5,7 +5,7 @@ package com.jiunntarn.detection_reminder.setting;
  */
 
 public enum Time {
-    // MORNING => 上午    AFTERNOON => 下午
-    MORNING, AFTERNOON
+    //FIRST => 今天的第一次提醒     MORNING => 上午    AFTERNOON => 下午
+    FIRST, MORNING, AFTERNOON
 }
 

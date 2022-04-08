@@ -19,9 +19,6 @@ import java.util.*;
 public class ReminderService {
 
     public static String reminder() throws Exception {
-        TimeUtil.printTime();
-        System.out.println("\tRun reminder");
-
         DAO dao = new DAO();
 
         Settings settings = new Settings(getTime());
@@ -33,7 +30,7 @@ public class ReminderService {
         List<String> atList = dao.getAtList(settings);
 
         if (!atList.isEmpty()) {
-            if (getTime() == Time.MORNING) {
+            if (getTime() == Time.FIRST) {
                 request.setMsgtype("actionCard");
                 OapiRobotSendRequest.Actioncard actioncard = new OapiRobotSendRequest.Actioncard();
                 actioncard.setTitle("今天这些同学需要做核酸");
@@ -41,9 +38,21 @@ public class ReminderService {
                 actioncard.setBtnOrientation("0");
                 OapiRobotSendRequest.Btns btns = new OapiRobotSendRequest.Btns();
                 btns.setTitle("(test)我确认了");
-                btns.setActionURL("http://www.baidu.com/");
+                btns.setActionURL("http://gateway.swsdu.online:4912/exclude_by_name/");
                 actioncard.setText(textContent);
-                actioncard.setBtns(Arrays.asList(btns));
+                actioncard.setBtns(List.of(btns));
+                request.setActionCard(actioncard);
+            } else if (getTime() == Time.MORNING) {
+                request.setMsgtype("actionCard");
+                OapiRobotSendRequest.Actioncard actioncard = new OapiRobotSendRequest.Actioncard();
+                actioncard.setTitle("请尽快做核酸");
+                textContent = "### 确认好了跟" + who + "说下[天使]\n\n" + "> " + dao.getAtString(settings) + "\n";
+                actioncard.setBtnOrientation("0");
+                OapiRobotSendRequest.Btns btns = new OapiRobotSendRequest.Btns();
+                btns.setTitle("(test)我确认了");
+                btns.setActionURL("http://gateway.swsdu.online:4912/exclude_by_name/");
+                actioncard.setText(textContent);
+                actioncard.setBtns(List.of(btns));
                 request.setActionCard(actioncard);
             } else if (getTime() == Time.AFTERNOON) {
                 request.setMsgtype("markdown");
@@ -73,12 +82,13 @@ public class ReminderService {
     public static Time getTime() {
         Calendar cal = Calendar.getInstance();
         int h = cal.get(Calendar.HOUR_OF_DAY);
-        if (h < 17) {
+        if (h < 9) {
+            return Time.FIRST;
+        } else if (h < 17) {
             return Time.MORNING;
-        } else if (h >= 17) {
+        } else {
             return Time.AFTERNOON;
         }
-        return null;
     }
 
 }

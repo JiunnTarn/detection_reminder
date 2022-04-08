@@ -2,31 +2,36 @@ package com.jiunntarn.detection_reminder.controller;
 
 
 import com.jiunntarn.detection_reminder.service.ExcludeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.jiunntarn.detection_reminder.util.TimeUtil;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 /**
  * @author JiunnTarn
  */
-@RestController
+@Controller
+@RequestMapping(value = "/exclude_by_name",method = RequestMethod.GET)
 public class ExcludeController {
 
-    @GetMapping("/exclude_by_name")
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
+    @ResponseBody
+    @GetMapping("/index.html")
     public String excludeByName(@RequestParam("name") String name) throws IOException {
+        TimeUtil.printTime();
+        System.out.println("\t" + name + " commite");
         int code = ExcludeService.excludeByName(name);
-        switch (code) {
-            case 0:
-                return name + " 提交成功。";
-            case 1:
-                return "找不到" + name + "。";
-            case 2:
-                return name + " 今天已经提交过了。";
-            default:
-                return "error";
-        }
+        return switch (code) {
+            case 0 -> name + " 提交成功。";
+            case 1 -> "找不到 " + name + "。";
+            case 2 -> name + " 今天已经提交过了。";
+            default -> "error";
+        };
 
     }
 }

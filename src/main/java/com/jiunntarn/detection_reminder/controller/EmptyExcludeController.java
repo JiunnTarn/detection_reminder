@@ -17,9 +17,9 @@ public class EmptyExcludeController {
     @GetMapping("/empty_exclude")
     @Scheduled(cron = "0 0 1 * * ?")
     public static String emptyExcludeController() throws IOException {
-        EmptyExcludeService.emptyExclude();
         TimeUtil.printTime();
-        System.out.println("\temptied exclude list");
+        System.out.println("\tempty exclude list");
+        EmptyExcludeService.emptyExclude();
         return "Done";
     }
 }

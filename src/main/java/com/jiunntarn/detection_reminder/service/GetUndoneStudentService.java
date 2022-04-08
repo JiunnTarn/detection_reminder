@@ -11,16 +11,20 @@ import java.util.List;
  */
 public class GetUndoneStudentService {
     public static String getUndoneStudent() throws IOException {
-        String res = "";
+        String res;
+        int cnt = 0;
         DAO dao = new DAO();
         List<String> list = dao.getUndoneStudent(new Settings(ReminderService.getTime()));
         if(list.isEmpty()){
             return "All Done.";
         } else {
+            StringBuilder stringBuilder = new StringBuilder();
             for (String i : list) {
-                res = res + "\n" + i;
+                cnt++;
+                stringBuilder.append("<br>").append(i);
             }
+            res = stringBuilder.toString();
         }
-        return res;
+        return res + "<br><br>共" + cnt + "人";
     }
 }
