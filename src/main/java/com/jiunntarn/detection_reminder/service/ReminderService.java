@@ -22,7 +22,7 @@ public class ReminderService {
         DAO dao = new DAO();
 
         Settings settings = new Settings(getTime());
-        String who = settings.getWho() == Who.ZJJ ? "朱嘉俊" : "徐宇翔";
+//        String who = settings.getWho() == Who.ZJJ ? "朱嘉俊" : "徐宇翔";
         String textContent;
         DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/robot/send?access_token=99d3f226f6770bc23f77ac9794ffed569ae4886192865bf5def4a2e5c5de58e2" + SignUtil.sign());
         OapiRobotSendRequest request = new OapiRobotSendRequest();
@@ -34,10 +34,10 @@ public class ReminderService {
                 request.setMsgtype("actionCard");
                 OapiRobotSendRequest.Actioncard actioncard = new OapiRobotSendRequest.Actioncard();
                 actioncard.setTitle("今天这些同学需要做核酸");
-                textContent = "### 今天这些同学需要做核酸\n" + "### 确认好了跟" + who + "说下[天使]\n\n" + "> " + dao.getAtString(settings) + "\n";
+                textContent = "### 今天这些同学需要做核酸\n\n" + "> " + dao.getAtString(settings) + "\n";
                 actioncard.setBtnOrientation("0");
                 OapiRobotSendRequest.Btns btns = new OapiRobotSendRequest.Btns();
-                btns.setTitle("(test)我确认了");
+                btns.setTitle("我确认了");
                 btns.setActionURL("http://gateway.swsdu.online:4912/exclude_by_name/");
                 actioncard.setText(textContent);
                 actioncard.setBtns(List.of(btns));
@@ -46,10 +46,10 @@ public class ReminderService {
                 request.setMsgtype("actionCard");
                 OapiRobotSendRequest.Actioncard actioncard = new OapiRobotSendRequest.Actioncard();
                 actioncard.setTitle("请尽快做核酸");
-                textContent = "### 确认好了跟" + who + "说下[天使]\n\n" + "> " + dao.getAtString(settings) + "\n";
+                textContent = "### 请尽快做核酸\n\n" + "> " + dao.getAtString(settings) + "\n";
                 actioncard.setBtnOrientation("0");
                 OapiRobotSendRequest.Btns btns = new OapiRobotSendRequest.Btns();
-                btns.setTitle("(test)我确认了");
+                btns.setTitle("我确认了");
                 btns.setActionURL("http://gateway.swsdu.online:4912/exclude_by_name/");
                 actioncard.setText(textContent);
                 actioncard.setBtns(List.of(btns));

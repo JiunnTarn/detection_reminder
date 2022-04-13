@@ -1,18 +1,39 @@
+<!DOCTYPE html>
+<html lang="Zh-CN">
+
 <head>
-  <meta charset="utf-8">
   <title>输入姓名并提交</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+  <meta name="renderer" content="webkit" />
+  <meta name="force-rendering" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+  <script>
+    window.onload = function onLoginLoaded() {
+      document.getElementById("name").value = document.cookie;
+    }
+
+    function mySubmit() {
+      document.cookie = document.getElementById("name").value;
+    }
+  </script>
+
 </head>
 
 <body>
-  <form action="index.html" method="GET">
-    <label>输入姓名并提交</label>
-    <br>
-    <br>
-    <label>
-      <input type="text" name="name" />
-    </label>
-    <br>
-    <br>
-    <input type="submit" value="提交">
-  </form>
+  <div class="wrapper">
+    <form class="form-signin" action="index.html" method="GET">
+      <!-- <br> -->
+      <!-- <h3 class="form-signin-heading">输入姓名并提交</h2> -->
+      <label>输入姓名并提交</label><br><br>
+      <input class="form-control" type="text" name="name" id="name" placeholder="请输入姓名" />
+      <br><br>
+      <input class="btn btn-lg btn-primary btn-block" type="submit" value="提交" onclick="mySubmit()">
+    </form>
+  </div>
 </body>

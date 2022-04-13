@@ -27,5 +27,4 @@
     <insert id="insertExclude" parameterType="com.jiunntarn.detection_reminder.pojo.Student">
         insert into exclude (name, phone, tail) values (#{name}, #{phone}, #{tail});
     </insert>
-
 </mapper>
