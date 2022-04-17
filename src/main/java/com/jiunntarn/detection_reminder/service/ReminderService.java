@@ -2,6 +2,7 @@ package com.jiunntarn.detection_reminder.service;
 
 import com.dingtalk.api.response.OapiRobotSendResponse;
 import com.jiunntarn.detection_reminder.Dao.DAO;
+import com.jiunntarn.detection_reminder.controller.EmptyExcludeController;
 import com.jiunntarn.detection_reminder.setting.Settings;
 import com.jiunntarn.detection_reminder.setting.Time;
 import com.jiunntarn.detection_reminder.setting.Who;
@@ -29,7 +30,7 @@ public class ReminderService {
 
         List<String> atList = dao.getAtList(settings);
 
-        if (!atList.isEmpty()) {
+        if (!atList.isEmpty() && !EmptyExcludeController.pauseReminder) {
             if (getTime() == Time.FIRST) {
                 request.setMsgtype("actionCard");
                 OapiRobotSendRequest.Actioncard actioncard = new OapiRobotSendRequest.Actioncard();
@@ -69,7 +70,7 @@ public class ReminderService {
 
             OapiRobotSendResponse response = client.execute(request);
             if (response.isSuccess()) {
-                System.out.println("Done");
+                System.out.println("Done : " + request.getAt());
             } else {
                 System.out.println("Error");
             }

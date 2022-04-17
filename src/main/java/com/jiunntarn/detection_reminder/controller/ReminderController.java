@@ -16,7 +16,7 @@ public class ReminderController {
     @GetMapping("/reminder")
     public static String reminderController() throws Exception {
         TimeUtil.printTime();
-        System.out.println("\tRun reminder");
+        System.out.print("\tRun reminder : ");
 
         return ReminderService.reminder();
     }
