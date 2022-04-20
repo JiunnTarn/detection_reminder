@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ * @author JiunnTarn
+ */
 @MapperScan(basePackages = {"com.jiunntarn.detection_reminder.mappers"})
 @EnableScheduling
 @SpringBootApplication

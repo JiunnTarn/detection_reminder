@@ -16,7 +16,7 @@ public class GetExcludeStudentController {
     @GetMapping("/get_exclude_student")
     public static String getExcludeStudent() throws IOException {
         TimeUtil.printTime();
-        System.out.println("\tGet exclude student");
+        System.out.println("\tGet exclude student.");
 
         return "已完成名单：<br>" + GetExcludeStudentService.getExcludeStudent();
     }

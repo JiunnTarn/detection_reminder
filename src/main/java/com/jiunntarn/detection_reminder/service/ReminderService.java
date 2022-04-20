@@ -3,6 +3,7 @@ package com.jiunntarn.detection_reminder.service;
 import com.dingtalk.api.response.OapiRobotSendResponse;
 import com.jiunntarn.detection_reminder.Dao.DAO;
 import com.jiunntarn.detection_reminder.controller.EmptyExcludeController;
+import com.jiunntarn.detection_reminder.controller.PauseReminderController;
 import com.jiunntarn.detection_reminder.setting.Settings;
 import com.jiunntarn.detection_reminder.setting.Time;
 import com.jiunntarn.detection_reminder.setting.Who;
@@ -30,7 +31,7 @@ public class ReminderService {
 
         List<String> atList = dao.getAtList(settings);
 
-        if (!atList.isEmpty() && !EmptyExcludeController.pauseReminder) {
+        if (!atList.isEmpty() && !PauseReminderController.pauseReminder) {
             if (getTime() == Time.FIRST) {
                 request.setMsgtype("actionCard");
                 OapiRobotSendRequest.Actioncard actioncard = new OapiRobotSendRequest.Actioncard();
@@ -38,8 +39,8 @@ public class ReminderService {
                 textContent = "### 今天这些同学需要做核酸\n\n" + "> " + dao.getAtString(settings) + "\n";
                 actioncard.setBtnOrientation("0");
                 OapiRobotSendRequest.Btns btns = new OapiRobotSendRequest.Btns();
-                btns.setTitle("我确认了");
-                btns.setActionURL("http://gateway.swsdu.online:4912/exclude_by_name/");
+                btns.setTitle("去确认");
+                btns.setActionURL("http://gateway.swsdu.online:4912/submit/");
                 actioncard.setText(textContent);
                 actioncard.setBtns(List.of(btns));
                 request.setActionCard(actioncard);
@@ -50,8 +51,8 @@ public class ReminderService {
                 textContent = "### 请尽快做核酸\n\n" + "> " + dao.getAtString(settings) + "\n";
                 actioncard.setBtnOrientation("0");
                 OapiRobotSendRequest.Btns btns = new OapiRobotSendRequest.Btns();
-                btns.setTitle("我确认了");
-                btns.setActionURL("http://gateway.swsdu.online:4912/exclude_by_name/");
+                btns.setTitle("去确认");
+                btns.setActionURL("http://gateway.swsdu.online:4912/submit/");
                 actioncard.setText(textContent);
                 actioncard.setBtns(List.of(btns));
                 request.setActionCard(actioncard);
@@ -76,7 +77,12 @@ public class ReminderService {
             }
             return request.getAt();
         } else {
-            return "Already Done.";
+            if(PauseReminderController.pauseReminder) {
+                return "今天已暂停。";
+            } else {
+                return "今天已经全部完成了。";
+            }
+
         }
     }
 

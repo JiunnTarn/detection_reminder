@@ -13,6 +13,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author JiunnTarn
+ */
 public class DAO {
     InputStream is;
     SqlSessionFactoryBuilder sqlSessionFactoryBuilder;

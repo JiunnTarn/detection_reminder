@@ -13,15 +13,12 @@ import java.io.IOException;
  */
 @RestController
 public class EmptyExcludeController {
-    public static boolean pauseReminder;
 
     @GetMapping("/empty_exclude")
     @Scheduled(cron = "0 0 1 * * ?")
     public static String emptyExcludeController() throws IOException {
         TimeUtil.printTime();
-        System.out.println("\tempty exclude list");
-
-        pauseReminder = false;
+        System.out.println("\tEmpty exclude list.");
 
         EmptyExcludeService.emptyExclude();
         return "Done";

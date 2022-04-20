@@ -15,7 +15,7 @@ public class GetUndoneStudentController {
     @GetMapping("/get_undone_student")
     public static String getUndoneStudent() throws IOException {
         TimeUtil.printTime();
-        System.out.println("\tGet undone student");
+        System.out.println("\tGet undone student.");
 
         return "未完成名单：<br>" + GetUndoneStudentService.getUndoneStudent();
     }
