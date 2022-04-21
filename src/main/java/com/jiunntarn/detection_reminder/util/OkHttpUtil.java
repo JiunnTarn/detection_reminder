@@ -52,9 +52,9 @@ public class OkHttpUtil {
                     cookieStore.put(url, cookies);
                     cookieStore.put(HttpUrl.parse("https://pass.sdu.edu.cn/cas/login"), cookies);
                     for(Cookie cookie:cookies){
-                        System.out.println("cookie Name:"+cookie.name());
-                        System.out.println("cookie Value:"+cookie.value());
-                        System.out.println("cookie Path:"+cookie.path());
+//                        System.out.println("cookie Name:"+cookie.name());
+//                        System.out.println("cookie Value:"+cookie.value());
+//                        System.out.println("cookie Path:"+cookie.path());
                     }
                 }
 
@@ -62,7 +62,7 @@ public class OkHttpUtil {
                 public List<Cookie> loadForRequest(HttpUrl url) {
                     List<Cookie> cookies = cookieStore.get(HttpUrl.parse("https://pass.sdu.edu.cn/cas/login"));
                     if(cookies==null){
-                        System.out.println("没加载到cookie");
+//                        System.out.println("没加载到cookie");
                     }
                     return cookies != null ? cookies : new ArrayList<Cookie>();
                 }
@@ -160,7 +160,7 @@ public class OkHttpUtil {
             Response response = HTTP_CLIENT.newCall(request).execute();
             if (response.isSuccessful() && Objects.nonNull(response.body())) {
                 String result = response.body().string();
-                logger.info("执行post请求,url: {}, header: {} ,参数: {} 成功，返回结果: {}", url, headers, json, result);
+                logger.info("执行post请求,url: {}, 成功，返回结果: {}", url, result);
                 return result;
             }
         } catch (Exception e) {
