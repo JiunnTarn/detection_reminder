@@ -68,7 +68,7 @@ public class ReminderService {
             OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
             at.setAtMobiles(atList);
             request.setAt(at);
-
+//
             OapiRobotSendResponse response = client.execute(request);
             if (response.isSuccess()) {
                 System.out.println("Done : " + request.getAt());

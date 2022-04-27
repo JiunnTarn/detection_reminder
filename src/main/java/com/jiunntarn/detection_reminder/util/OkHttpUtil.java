@@ -1,6 +1,7 @@
 package com.jiunntarn.detection_reminder.util;
 
 import com.google.gson.Gson;
+import com.jiunntarn.detection_reminder.pojo.MyCookieJar;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
-public class OkHttpUtil {
+public class OkHttpUtil<JavaNetCookieJar> {
     public final static Logger logger = LoggerFactory.getLogger(OkHttpUtil.class);
     /**
      * 最大连接时间
@@ -41,50 +42,49 @@ public class OkHttpUtil {
      * client
      * 配置重试
      */
-    private final static OkHttpClient HTTP_CLIENT = new OkHttpClient.Builder()
-//            .followRedirects(false)
-            .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
-            .cookieJar(new CookieJar() {
-                private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
+    static MyCookieJar cookieJar = new MyCookieJar() {
+        private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
 
-                @Override
-                public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-                    cookieStore.put(url, cookies);
-                    cookieStore.put(HttpUrl.parse("https://pass.sdu.edu.cn/cas/login"), cookies);
-                    for(Cookie cookie:cookies){
+        @Override
+        public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+            cookieStore.put(url, cookies);
+            cookieStore.put(HttpUrl.parse("https://pass.sdu.edu.cn/cas/login"), cookies);
+            for(Cookie cookie:cookies){
 //                        System.out.println("cookie Name:"+cookie.name());
 //                        System.out.println("cookie Value:"+cookie.value());
 //                        System.out.println("cookie Path:"+cookie.path());
-                    }
-                }
+            }
+        }
 
-                @Override
-                public List<Cookie> loadForRequest(HttpUrl url) {
-                    List<Cookie> cookies = cookieStore.get(HttpUrl.parse("https://pass.sdu.edu.cn/cas/login"));
-                    if(cookies==null){
+        @Override
+        public List<Cookie> loadForRequest(HttpUrl url) {
+            List<Cookie> cookies = cookieStore.get(HttpUrl.parse("https://pass.sdu.edu.cn/cas/login"));
+            if(cookies==null){
 //                        System.out.println("没加载到cookie");
-                    }
-                    return cookies != null ? cookies : new ArrayList<Cookie>();
-                }
-            })
+            }
+            return cookies != null ? cookies : new ArrayList<Cookie>();
+        }
+
+        @Override
+        public void clearCookieJar() {
+            cookieStore.clear();
+        }
+
+    };
+
+    private final static OkHttpClient HTTP_CLIENT = new OkHttpClient.Builder()
+//            .followRedirects(false)
+            .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+            .cookieJar(cookieJar)
             .connectionPool(new ConnectionPool(MAX_IDLE_CONNECTIONS, KEEP_ALIVE_DURATION, TimeUnit.MINUTES))
             .build();
 
-    static class LocalCookieJar implements CookieJar{
-        List<Cookie> cookies;
-
-        @Override
-        public List<Cookie> loadForRequest(HttpUrl arg0) {
-            if (cookies != null) {
-                return cookies;
-            }
-            return new ArrayList<Cookie>();
+    public static void clearCookieJar() {
+        try {
+            cookieJar.clearCookieJar();
+        } catch (Exception e) {
+            logger.error("清除CookieJar失败", e);
         }
-        @Override
-        public void saveFromResponse(HttpUrl arg0, List<Cookie> cookies) {
-            this.cookies = cookies;
-        }
-
     }
 
 
@@ -109,6 +109,7 @@ public class OkHttpUtil {
                 logger.info("执行get请求, url: {} 成功", url);
                 return result;
             }
+
         } catch (Exception e) {
             logger.error("执行get请求，url: {} 失败!", url, e);
         }
