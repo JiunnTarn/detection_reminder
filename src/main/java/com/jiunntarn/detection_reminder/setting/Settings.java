@@ -7,7 +7,7 @@ import java.util.List;
  * @author JiunnTarn
  */
 public class Settings {
-//    private Who who;
+    //    private Who who;
     private List<Integer> tail;
 
     public List<Integer> getTail() {
@@ -25,22 +25,23 @@ public class Settings {
         if (dayPart == Time.AFTERNOON) {
             dayFromStart++;
         }
-        switch (dayFromStart % 3) {
-            case 0 -> {
-                tail = List.of(1, 2, 3, 4);
-//                who = Who.XYX;
-            }
-            case 1 -> {
-                tail = List.of(5, 6, 7);
-//                who = Who.ZJJ;
-            }
-            case 2 -> {
-                tail = List.of(8, 9, 0);
-//                who = Who.ZJJ;
-            }
-            default -> {
-            }
-        }
+//        switch (dayFromStart % 3) {
+//            case 0 -> {
+//                tail = List.of(1, 2, 3, 4);
+////                who = Who.XYX;
+//            }
+//            case 1 -> {
+//                tail = List.of(5, 6, 7);
+////                who = Who.ZJJ;
+//            }
+//            case 2 -> {
+//                tail = List.of(8, 9, 0);
+////                who = Who.ZJJ;
+//            }
+//            default -> {
+//            }
+//        }
+        tail = List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     }
 }
 
