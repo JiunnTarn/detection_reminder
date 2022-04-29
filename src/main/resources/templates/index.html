@@ -19,8 +19,8 @@
 
     .wrapper {
       padding-top: 100px;
-      margin-left: 20px;
-      margin-right: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     .form-signin {
@@ -29,10 +29,10 @@
       /* background: linear-gradient(52.78deg,#003edd 30.03%,#0b7bf8 89.59%); */
       background-color: #fff;
 
-      padding: 30px 40px 190px;
-      border: 1px solid #e5e5e5;
-      border-radius: 5px;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      padding: 30px 40px 190px 40px;
+      /* border: 1px solid #e5e5e5; */
+      border-radius: 8px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.35);
     }
 
 
@@ -42,7 +42,7 @@
       font-size: 30px;
       margin-bottom: 30px;
       font-weight: bold;
-      letter-spacing: -2px;
+      /* letter-spacing: -2px; */
     }
 
     .form-signin input[type="text"],
@@ -57,11 +57,13 @@
       border-right-style: none;
       border-bottom-style: solid;
       border-left-style: none;
-      border-top-color: #000000;
-      border-right-color: #000000;
-      border-bottom-color: #000000;
-      border-left-color: #000000;
+      border-top-color: #0000008e;
+      border-right-color: #0000008e;
+      border-bottom-color: #0000008e;
+      border-left-color: #0000008e;
 
+
+      width: 100%;
       padding: 0 !important;
       height: 40px;
       margin-bottom: 10px;
@@ -69,7 +71,7 @@
 
     .form-signin .form-control {
       font-size: 20px;
-      font-weight: bold;
+      font-weight: 400;
     }
 
     .btn-block {
@@ -124,12 +126,12 @@
     <form class="form-signin" action="index.html" method="GET">
       <br>
       <h2 class="form-signin-heading">输入信息并提交</h2>
-        <!-- <label>输入姓名、学号、密码并提交</label><br><label>（密码是山东大学统一登录那个）</label><br><br> -->
-        <input class="form-control" type="text" name="name" id="name" placeholder="请输入姓名" />
-        <br><input class="form-control" type="text" name="u" id="u" placeholder="请输入学号" />
-        <br><input class="form-control" type="password" name="p" id="p" placeholder="请输入密码" />
-        <br><br>
-        <input class="btn btn-lg btn-primary btn-block" type="submit" value="提交" onclick="mySubmit()">
+      <!-- <label>输入姓名、学号、密码并提交</label><br><label>（密码是山东大学统一登录那个）</label><br><br> -->
+      <input class="form-control" type="text" name="name" id="name" placeholder="请输入姓名" />
+      <br><input class="form-control" type="text" name="u" id="u" placeholder="请输入学号" />
+      <br><input class="form-control" type="password" name="p" id="p" placeholder="请输入密码" />
+      <br><br>
+      <input class="btn btn-lg btn-primary btn-block" type="submit" value="提交" onclick="mySubmit()">
     </form>
   </div>
 </body>
