@@ -15,7 +15,7 @@ import java.io.IOException;
 public class EmptyExcludeController {
 
     @GetMapping("/empty_exclude")
-    @Scheduled(cron = "0 0 1 * * ?")
+    @Scheduled(cron = "0 0 19 * * ?")
     public static String emptyExcludeController() throws IOException {
         TimeUtil.printTime();
         System.out.println("\tEmpty exclude list.");

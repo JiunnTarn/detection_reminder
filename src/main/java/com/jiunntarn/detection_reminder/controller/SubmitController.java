@@ -27,7 +27,7 @@ public class SubmitController {
         TimeUtil.printTime();
         System.out.println("\t" + name + " submit.");
 
-        String status, message = "";
+        String status, message;
 
         message = SubmitService.submitService(name, u, p);
         model.addAttribute("msg", message);

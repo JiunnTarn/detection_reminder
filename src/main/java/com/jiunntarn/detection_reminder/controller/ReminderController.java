@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ReminderController {
 
-    @Scheduled(cron = "0 20 7,12,13,14,22 * * ?")
+    @Scheduled(cron = "0 20 7,12,13,22 * * ?")
     @GetMapping("/reminder")
     public static String reminderController() throws Exception {
         TimeUtil.printTime();

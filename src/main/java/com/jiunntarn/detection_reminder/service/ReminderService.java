@@ -47,8 +47,8 @@ public class ReminderService {
             } else if (getTime() == Time.MORNING) {
                 request.setMsgtype("actionCard");
                 OapiRobotSendRequest.Actioncard actioncard = new OapiRobotSendRequest.Actioncard();
-                actioncard.setTitle("请尽快做核酸");
-                textContent = "### 请尽快做核酸\n\n" + "> " + dao.getAtString(settings) + "\n";
+                actioncard.setTitle("请在13:00前前往六区下做核酸");
+                textContent = "### 请在13:00前前往六区下做核酸\n\n" + "> " + dao.getAtString(settings) + "\n";
                 actioncard.setBtnOrientation("0");
                 OapiRobotSendRequest.Btns btns = new OapiRobotSendRequest.Btns();
                 btns.setTitle("去确认");
